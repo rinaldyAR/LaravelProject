@@ -21,4 +21,5 @@ Route::get('/question', 'QuestionController@index'); // menampilkan semua
 Route::post('question', 'QuestionController@store'); // menyimpan data
 Route::get('/question/create', 'QuestionController@create'); // menampilkan halaman form
 
-Route::get('/question/{answer_id}', 'answerController@index'); // menampilkan form jawaban
+Route::get('/answer/{question_id}', 'AnswerController@index'); // menampilkan form jawaban
+Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban

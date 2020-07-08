@@ -13,4 +13,9 @@ class QuestionModel {
         $new_question = DB::table('questions')->insert($data);
         return $new_question;
     }
+
+    public static function find_by_id($id){
+        $item = DB::table('questions')->where('id', $id)->first();
+        return $item;
+    }
 }
