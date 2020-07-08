@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/question', 'QuestionController@index'); // menampilkan semua
+Route::post('question', 'QuestionController@store'); // menyimpan data
+Route::get('/question/create', 'QuestionController@create'); // menampilkan halaman form
+
+Route::get('/question/{answer_id}', 'answerController@index'); // menampilkan form jawaban
