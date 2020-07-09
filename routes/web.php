@@ -27,3 +27,8 @@ Route::delete('/question/{id}', 'QuestionController@destroy'); // menghapus data
 
 Route::get('/answer/{question_id}', 'AnswerController@index'); // menampilkan form jawaban
 Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
