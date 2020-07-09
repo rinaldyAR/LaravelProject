@@ -18,7 +18,7 @@ class AnswerController extends Controller
 
     public function store($question_id, Request $request){
         // dd('test');
-        dd($request->all());
+        // dd($request->all());
         $data = $request->all();
         unset($data["_token"]);
         AnswerModel::save($data);

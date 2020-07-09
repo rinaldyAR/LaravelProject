@@ -10,8 +10,8 @@ class AnswerModel{
     }
 
     public static function save($data){
-        dd($data);
+        // dd($data);
         $new_answer = DB::table('answers')->insert($data);
-        return $new_asnwer;
+        return $new_answer;
     }
 }
