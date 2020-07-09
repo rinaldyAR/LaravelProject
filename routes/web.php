@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/question', 'QuestionController@index'); // menampilkan semua
 Route::post('question', 'QuestionController@store'); // menyimpan data
 Route::get('/question/create', 'QuestionController@create'); // menampilkan halaman form
@@ -29,6 +31,4 @@ Route::get('/answer/{question_id}', 'AnswerController@index'); // menampilkan fo
 Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
