@@ -18,4 +18,23 @@ class QuestionModel {
         $item = DB::table('questions')->where('id', $id)->first();
         return $item;
     }
+
+    public static function update($id, $request){
+        $question = DB::table('questions')
+                        ->where('id', $id)
+                        ->update([
+                            'judul' => $request["judul"],
+                            'isi' => $request["isi"],
+                            'tanggal_dibuat' => $request["tanggal_dibuat"],
+                            'tanggal_diperbaharui' => $request["tanggal_diperbaharui"]
+                        ]);
+        return $question;
+    }
+
+    public static function destroy($id){
+        $deleted = DB::table('questions')
+                        ->where('id', $id)
+                        ->delete();
+        return $deleted;
+    }
 }

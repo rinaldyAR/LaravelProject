@@ -39,4 +39,21 @@ class QuestionController extends Controller
         $answers = AnswerModel::find_by_question_id($id);
         return view('question.show', compact('question', 'answers'));
     }
+
+    public function edit($id){
+        // dd('masuk');
+        $question = QuestionModel::find_by_id($id);
+        return view('question.edit', compact('question'));
+    }
+
+    public function update($id, Request $request){
+        $question = QuestionModel::update($id, $request->all());
+        return redirect('/question');
+    }
+
+    public function destroy($id){
+        $deleted = QuestionModel::destroy($id);
+        return redirect('/question');
+    }
+
 }
