@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\QuestionModel;
+use App\Models\AnswerModel;
 
 // model custom
 
@@ -30,5 +32,11 @@ class QuestionController extends Controller
 
         $new_question->save();
         return redirect('/question');
+    }
+
+    public function show($id){
+        $question = QuestionModel::find_by_id($id);
+        $answers = AnswerModel::find_by_question_id($id);
+        return view('question.show', compact('question', 'answers'));
     }
 }

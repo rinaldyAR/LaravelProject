@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/question', 'QuestionController@index'); // menampilkan semua
 Route::post('question', 'QuestionController@store'); // menyimpan data
 Route::get('/question/create', 'QuestionController@create'); // menampilkan halaman form
+Route::get('/question/{id}', 'QuestionController@show'); // menampilkan pertanyaan dan jawaban
 
 Route::get('/answer/{question_id}', 'AnswerController@index'); // menampilkan form jawaban
 Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban
