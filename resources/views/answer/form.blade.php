@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<<<<<<< HEAD
+<!-- Head -->
 <div class="card">
  <div class="card-body">
   <div class="list-group">
@@ -19,7 +19,7 @@
    @foreach($answers as $res)
   <div class="list-group">
    <li class="list-group-item list-group-item-action ">
-    <p class="mb-1">{{ $res->isi }}</p>
+    <p class="mb-1">{!! $res->isi !!}</p>
     <div class="row">
      <div class="col-4 ">
       <button class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button>
@@ -55,5 +55,16 @@
  </div>
 </div>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
 
+<script>
+  ClassicEditor
+                            .create( document.querySelector( '#isi' ) )
+                            .then( isi => {
+                                    console.log( isi );
+                            } )
+                            .catch( error => {
+                                    console.error( error );
+                            } );
+</script>
 @endsection

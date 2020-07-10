@@ -9,7 +9,7 @@
             <div>
                 <h2>Jawaban</h2>
                 @foreach($answers as $answer)
-                    <p>{{ $answer->isi}} , Tanggal dibuat : {{ $answer->created_at}}, Tanggal Diperbaharui : {{ $answer->updated_at}}</p>
+                    <p>{!! $answer->isi!!}  Tanggal dibuat : {{ $answer->created_at}}, Tanggal Diperbaharui : {{ $answer->updated_at}}</p>
                 @endforeach
             </div>
         </div>
