@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
     <div class="ml-3 mt-3">
@@ -19,8 +19,8 @@
                     <label for="isi">Masukkan Pertanyaan</label>
                     <textarea class="form-control" id="isi" name = "isi" placeholder="Isi Pertanyaan" cols="30" rows="10"></textarea>
                   </div>
-                  <input hidden name="tanggal_dibuat" value="{{ \Carbon\Carbon::now() }}">
-                  <input hidden name="tanggal_diperbaharui" value="{{ \Carbon\Carbon::now() }}">
+                  <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
+                  <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

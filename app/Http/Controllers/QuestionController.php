@@ -37,7 +37,6 @@ class QuestionController extends Controller
         $new_question = new Question;
         $new_question->judul = $request->judul;
         $new_question->isi = $request->isi;
-        $new_question->kebenaran = 0;
         $new_question->user_id = $request->user()->id;
         $new_question->created_at = $mytime;
         $new_question->updated_at = $mytime;

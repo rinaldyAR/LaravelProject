@@ -18,6 +18,7 @@ class CreateAnswersTable extends Migration
             $table->longText('isi');
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('user_id');
+              $table->boolean('kebenaran')->default('0');
 
             $table->foreign('user_id')
             ->references('id')

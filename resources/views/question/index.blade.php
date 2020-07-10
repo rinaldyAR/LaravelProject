@@ -1,12 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <div class="ml-3 mt-3">
-    <h1>Daftar Pertanyaan</h1>
-        <a href="/question/create" class="btn btn-primary">
+
+
+<div class="card">
+    <div class="card-header" style="background-color:white;border:0">
+         <h1>Daftar Pertanyaan</h1>
+    </div>
+    <div class="card-body">
+        <div class="ml-3 mt-3">
+        <a href="/question/create" class="btn btn-primary my-2">
             Tambah Pertanyaan
         </a>
-        <table class="table table-bordered mt-3">
+        <table class="table table-bordered ">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -34,9 +40,10 @@
                     </tr>
                     @endforeach
                 </tbody>
-        </table>
-       
+        </table>     
+</div>        
     </div>
+</div>
     
     
 @endsection
