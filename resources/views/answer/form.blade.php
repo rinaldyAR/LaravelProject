@@ -5,8 +5,10 @@
         <h1>Pertanyaan</h1>
         <p>Judul : {{ $question->judul }} </p>
         <p>Isi : {{ $question->isi }} </p>
-        <p>Tanggal Dibuat : {{ $question->tanggal_dibuat }}</p>
-        <p>Tanggal Diupdate : {{ $question->tanggal_diperbaharui}}</p>
+        <p>Kebenaran : {{ $question->kebenaran }}</p>
+        <p>User ID : {{ $question->user_id}}</p>
+        <p>Tanggal Dibuat : {{ $question->created_at}}</p>
+        <p>Tanggal Diperbaharui : {{ $question->updated_at}}</p>
     </div>
     
     <div class="ml-3">    
@@ -17,8 +19,7 @@
                 <textarea class="form-control" rows="5" id="isi" placeholder="Masukkan jawaban" name="isi"></textarea>
             </div>
             <input hidden name="question_id" value="{{ $question->id }}" >
-            <input hidden name="tanggal_dibuat" value="{{ \Carbon\Carbon::now() }}">
-            <input hidden name="tanggal_diperbaharui" value="{{ \Carbon\Carbon::now() }}">
+            <input hidden name="user_id" value="{{ $question->id }}" >
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

@@ -29,4 +29,17 @@
               </form>
         </div>
     </div>
+    
+    <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
+   
+    <script>
+      ClassicEditor
+                                .create( document.querySelector( '#isi' ) )
+                                .then( isi => {
+                                        console.log( isi );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+    </script>
 @endsection
