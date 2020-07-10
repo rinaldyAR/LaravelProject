@@ -21,7 +21,7 @@ class QuestionController extends Controller
 
     public function index(){
         $questions = Question::all();
-        
+
         return view('question.index', compact('questions'));
     }
 
@@ -64,7 +64,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $question->judul = $request->judul;
         $question->isi = $request->isi;
-        $question->tanggal_diperbaharui = $mytime;
+        $question->updated_at = $mytime;
         $question->save();
         return redirect('/question');
     }

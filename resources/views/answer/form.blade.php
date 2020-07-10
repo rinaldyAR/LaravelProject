@@ -10,7 +10,7 @@
      <h2 class="mb-1 ">{{ $question->judul }}</h2>
     </div>
     <hr>
-    <p class="mb-1">{{ $question->isi }}</p>
+    <p class="mb-1">{!! $question->isi !!}</p>
     <small>Tanggal Dibuat     : {{ $question->created_at }}</small>
     <small>Tanggal Update   : {{ $question->updated_at}}</small>
    </li>
@@ -36,9 +36,9 @@
   </div>
     @endforeach
 
-  
+
    <hr>
-   <div class="mt-5">    
+   <div class="mt-5">
    <h5 class="my-3">Jawabban Kamu :</h5>
    <form action="/answer/{{$question->id}}" method="POST">
     @csrf
@@ -56,4 +56,4 @@
 </div>
 
 
-@endsection 
+@endsection
