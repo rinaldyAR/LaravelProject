@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<<<<<<< HEAD
 <div class="card">
  <div class="card-body">
   <div class="list-group">
