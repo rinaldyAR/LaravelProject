@@ -30,6 +30,10 @@
 
                     </select>
                   </div>
+                  <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input type="text" class="form-control" id="tags" name = "tags" placeholder="tags">
+                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

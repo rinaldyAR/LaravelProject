@@ -12,6 +12,7 @@ use \Carbon\Carbon;
 use App\Question;
 use App\Answer;
 use App\Category;
+use App\Tag;
 
 class QuestionController extends Controller
 {
@@ -35,7 +36,7 @@ class QuestionController extends Controller
         // dd($request->all());
         $mytime = Carbon::now();
         $mytime->toDateTimeString();
-
+        // create question baru
         $new_question = new Question;
         $new_question->judul = $request->judul;
         $new_question->isi = $request->isi;
@@ -45,6 +46,23 @@ class QuestionController extends Controller
         $new_question->category_id = $request->category_id;
 
         $new_question->save();
+
+        // dd($request->tags);
+
+        $tagArr = explode(',', $request->tags);
+        // dd($tagArr);
+        $tagsMulti = [];
+        foreach($tagArr as $strTag){
+            $tagArrAssc["tag_name"] = $strTag;
+            $tagsMulti[] = $tagArrAssc;
+        }
+        // dd($tagsMulti);
+        // create Tags baru
+        foreach($tagsMulti as $tagChek){
+            $tag = Tag::firstOrCreate($tagChek);
+            $new_question->tags()->attach($tag->id);
+        }
+
         return redirect('/question');
     }
 
