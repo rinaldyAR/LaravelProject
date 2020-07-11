@@ -39,7 +39,7 @@
 
    <hr>
    <div class="mt-5">
-   <h5 class="my-3">Jawabban Kamu :</h5>
+   <h5 class="my-3">Jawaban Kamu :</h5>
    <form action="/answer/{{$question->id}}" method="POST">
     @csrf
     <div class="form-group">
