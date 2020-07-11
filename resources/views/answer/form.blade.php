@@ -16,13 +16,15 @@
    </li>
   </div>
   <h5 class="mt-4">Answer:</h5>
-   @foreach($answers as $res)
-  <div class="list-group">
-   <li class="list-group-item list-group-item-action ">
+   @foreach($answers as $key=>$res)
+<div id="{{$res->id}}" class="list-group">
+   <li id="ini" class="list-group-item list-group-item-action ">
     <p class="mb-1">{!! $res->isi !!}</p>
     <div class="row">
-     <div class="col-4 ">
-      <button class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button>
+     <div  class="col-4 ">
+      <button onclick="saveVote({{ Auth::user()->id }},{{$res->id}})" class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button>
+      <button id="v{{$res->id}}" class="btn btn-primary btn-sm" value="{{$count[$key]}}">{{$count[$key]}}</button>
+      <button onclick="removeVote({{ Auth::user()->id }},{{$res->id}})" class="btn btn-primary btn-sm"><i class="far fa-thumbs-down"></i></button>
       <button class="btn btn-info btn-sm"><i class="far fa-edit"></i></button>
       <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
       <button class="btn btn-info btn-sm"><i class="fas fa-trash"></i></button>
@@ -68,3 +70,52 @@
                             } );
 </script>
 @endsection
+
+@push('jqueri')
+<script>
+
+function saveVote(userid,postid){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        console.log(userid+' '+postid)
+        jQuery.ajax({
+                url: "/updateAjax",
+                type: "POST",
+                data: {
+                        _token: CSRF_TOKEN,
+                        postid: postid,
+                        userid: userid,
+                        status: '1'			
+                },
+                dataType: 'json',
+                success: function(data) {
+                        alert(JSON.stringify(data));
+                },
+                error: function(data) {
+                        alert(JSON.stringify(data));
+                }
+        })
+}
+
+function removeVote(userid,postid){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        console.log(userid+' '+postid)
+        jQuery.ajax({
+                url: "/updateAjax",
+                type: "POST",
+                data: {
+                        _token: CSRF_TOKEN,
+                        postid: postid,
+                        userid: userid,
+                        status: '0'			
+                },
+                dataType: 'json',
+                success: function(data) {
+                        alert(JSON.stringify(data));
+                },
+                error: function(data) {
+                        alert(JSON.stringify(data));
+                }
+        })
+}
+</script>
+@endpush
