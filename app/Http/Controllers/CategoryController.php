@@ -40,7 +40,7 @@ class CategoryController extends Controller
             'name' => $request['name']
         ]);
 
-        return redirect('/categories');
+        return redirect('/categories')->with('create','category telah di tambah');
     }
 
     /**
@@ -62,7 +62,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $file=Category::find($id)->where('id',$id)->first();
+        return view('category.edit',["file" =>$file]);
     }
 
     /**
@@ -74,7 +75,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $file=Category::find($id)->where('id',$id)->first();
+       $file->name=$request->get('name');
+       $file->save();
+
+       return redirect('/categories')->with('edit','Category telah di edit');
     }
 
     /**
@@ -85,6 +90,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file=Category::findOrFail($id);
+
+        $file->delete();
+        return redirect('/categories')->with('delete','Category  telah di hapus');
     }
 }

@@ -4,8 +4,8 @@
 
 
 <div class="card">
-    <div class="card-header" style="background-color:white;border:0">
-         <h1>Daftar Pertanyaan</h1>
+    <div class="card-header" >
+         <h5>Daftar Pertanyaan</h5>
     </div>
     <div class="card-body">
         <div class="ml-3 mt-3">
