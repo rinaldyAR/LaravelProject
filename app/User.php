@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function voteQuestions(){
+        return $this->belongsToMany('App\Question', 'vote_question', 'user_id', 'question_id');
+    }
+
+    public function voteAnswer(){
+        return $this->belongsToMany('App\Answer', 'vote_question', 'user_id', 'answare_id');
+    }
 }

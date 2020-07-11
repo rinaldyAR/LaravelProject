@@ -12,4 +12,8 @@ class Answer extends Model
     const UPDATED_AT = 'tanggal_diperbaharui';
     protected $question_id = 'question_id';
     protected $isi = 'isi';
+
+    public function votes(){
+        return $this->belongsToMany('App\User', 'vote_answers', 'id', 'user_id');
+    }
 }
