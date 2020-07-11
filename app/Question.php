@@ -14,5 +14,9 @@ class Question extends Model
     protected $judul = 'judul';
     protected $isi = 'isi';
     protected $user_id = 'user_id';
+    protected $category_id = 'category_id';
 
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }

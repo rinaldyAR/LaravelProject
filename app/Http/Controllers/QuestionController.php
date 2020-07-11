@@ -11,6 +11,7 @@ use \Carbon\Carbon;
 // model eloquent
 use App\Question;
 use App\Answer;
+use App\Category;
 
 class QuestionController extends Controller
 {
@@ -26,11 +27,12 @@ class QuestionController extends Controller
     }
 
     public function create(){
-        return view('question.form');
+        $categories = Category::all();
+        return view('question.form', compact('categories'));
     }
 
     public function store(Request $request){
-
+        // dd($request->all());
         $mytime = Carbon::now();
         $mytime->toDateTimeString();
 
@@ -40,6 +42,7 @@ class QuestionController extends Controller
         $new_question->user_id = $request->user()->id;
         $new_question->created_at = $mytime;
         $new_question->updated_at = $mytime;
+        $new_question->category_id = $request->category_id;
 
         $new_question->save();
         return redirect('/question');
@@ -54,7 +57,8 @@ class QuestionController extends Controller
     public function edit($id){
         // dd('masuk');
         $question = Question::find($id);
-        return view('question.edit', compact('question'));
+        $categories = Category::all();
+        return view('question.edit', compact('question', 'categories'));
     }
 
     public function update($id, Request $request){
@@ -65,6 +69,8 @@ class QuestionController extends Controller
         $question->judul = $request->judul;
         $question->isi = $request->isi;
         $question->updated_at = $mytime;
+        $question->created_at = $request->created_at;
+        $question->category_id = $request->category_id;
         $question->save();
         return redirect('/question');
     }

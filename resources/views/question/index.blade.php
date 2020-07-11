@@ -18,6 +18,7 @@
                         <th>No</th>
                         <th>Judul Pertanyaan</th>
                         <th>Isi Pertanyaan</th>
+                        <th>Kategori</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $question->judul }}</td>
                         <td>{!! $question->isi !!}</td>  
+                        <td>{{ $question->category->name}}</td>
                         <td>
                             <a href="answer/{{$question->id}}" class="btn btn-sm btn-success">Jawab</a>
                             <a href="question/{{$question->id}}" class="btn btn-sm btn-primary">Lihat QnA</a>

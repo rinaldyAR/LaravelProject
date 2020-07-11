@@ -25,8 +25,9 @@ class QuestionModel {
                         ->update([
                             'judul' => $request["judul"],
                             'isi' => $request["isi"],
-                            'tanggal_dibuat' => $request["tanggal_dibuat"],
-                            'tanggal_diperbaharui' => $request["tanggal_diperbaharui"]
+                            'created_at' => $request["created_at"],
+                            'update_at' => $request["update_at"],
+                            'category_id' => $request["category_id"],
                         ]);
         return $question;
     }
