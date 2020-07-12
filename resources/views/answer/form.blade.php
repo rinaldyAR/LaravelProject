@@ -39,29 +39,32 @@
   </button>
 {{session('update_answer')}}</div>
 @endif  
-@foreach($answers as $res)
-<div class="list-group">
- <li class="list-group-item list-group-item-action ">
-  <p class="mb-1">{!! $res->isi !!}</p>
-  <div class="row">
-   <div class="col-4 ">
-    <button class="btn btn-primary btn-sm"><span class="far fa-thumbs-up"></span></button>
-    <a href="{{route('edit',[$res->id,$res->question_id])}}" class="btn btn-info btn-sm"><span class="far fa-edit"></span></a>
+ @foreach($answers as $key=>$res)
+   
+<div id="{{$res->id}}" class="list-group">
+   <li id="ini" class="list-group-item list-group-item-action ">
+    <p class="mb-1">{!! $res->isi !!}</p>
+    <p> Dijawab oleh : {{ $res-> user->name }}</p>
+    <div class="row">
+     <div  class="col-4 ">
+      <button onclick="saveVote({{ Auth::user()->id }},{{$res->id}})" class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button>
+      <button id="v{{$res->id}}" class="btn btn-primary btn-sm" value="{{$count[$key]}}">{{$count[$key]}}</button>
+      <button onclick="removeVote({{ Auth::user()->id }},{{$res->id}})" class="btn btn-primary btn-sm"><i class="far fa-thumbs-down"></i></button>
+     <a href="{{route('edit',[$res->id,$res->question_id])}}" class="btn btn-info btn-sm"><span class="far fa-edit"></span></a>
     <form action="{{route('delete',[$res->id,$res->question_id])}}" method="post" style="display: inline;">
       @csrf
       @method('DELETE')
       <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
     </form>
-
+     </div>
+     <div class="col-8">
+      <small>Tanggal Dibuat    : {{ $res->created_at }}</small>
+      <small>Tanggal Update   : {{ $res->updated_at}}</small>
+     </div>
+    </div>
+   </li>
   </div>
-  <div class="col-8">
-    <small>Tanggal Dibuat    : {{ $res->created_at }}</small>
-    <small>Tanggal Update   : {{ $res->updated_at}}</small>
-  </div>
-</div>
-</li>
-</div>
-@endforeach
+    @endforeach
 
 
 <hr>
@@ -96,3 +99,59 @@
   } );
 </script>
 @endsection
+@push('jqueri')
+<script>
+function saveVote(userid,postid){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        console.log(userid+' '+postid)
+        
+        
+        jQuery.ajax({
+                url: "/updateAjax",
+                type: "POST",
+                data: {
+                        "_token": CSRF_TOKEN,
+                        "postid": postid,
+                        "userid": userid,
+                        "status": '1'     
+                },
+                success: function(data) {
+                        var theid = 'v'+postid;
+                        var displayvote = document.getElementById(theid).innerHTML;
+                        displayvote = parseInt(displayvote)+1;
+                        document.getElementById(theid).innerHTML=displayvote;
+                },
+                error: function(data) {
+                        alert(JSON.stringify(data));
+                        
+                }
+        })
+        
+}
+function removeVote(userid,postid){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        console.log(userid+' '+postid)
+        jQuery.ajax({
+                url: "/updateAjax",
+                type: "POST",
+                data: {
+                        "_token": CSRF_TOKEN,
+                        "postid": postid,
+                        "userid": userid,
+                        "status": '0'     
+                },
+                success: function(data) {
+                        var theid = 'v'+postid;
+                        var displayvote = document.getElementById(theid).innerHTML;
+                        displayvote = parseInt(displayvote)-1;
+                        document.getElementById(theid).innerHTML=displayvote;
+                },
+                error: function(data) {
+                        alert(JSON.stringify(data));
+                        
+                }
+        })
+        
+}
+</script>
+@endpush

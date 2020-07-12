@@ -11,7 +11,7 @@
         <div class="ml-3 mt-3">
         <a href="/question/create" class="btn btn-primary my-2">
             Tambah Pertanyaan
-        </a>
+    </a>
         <table class="table table-bordered ">
                 <thead>
                     <tr>

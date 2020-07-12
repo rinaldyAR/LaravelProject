@@ -17,7 +17,7 @@ class CreateVoteAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('answare_id');
-
+            $table->integer('status');
             $table->foreign('answare_id')->references('id')->on('answers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

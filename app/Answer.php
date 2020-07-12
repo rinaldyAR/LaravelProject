@@ -12,4 +12,13 @@ class Answer extends Model
     const UPDATED_AT = 'updated_at';
     protected $question_id = 'question_id';
     protected $isi = 'isi';
+
+    public function votes(){
+        return $this->belongsToMany('App\User', 'vote_answers', 'id', 'user_id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
 }

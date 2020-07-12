@@ -40,7 +40,7 @@
     <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
     <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Update</button>
    </form>
   </div>
  </div>

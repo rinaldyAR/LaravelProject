@@ -90,7 +90,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $file=Category::findOrFail($id);
+        $file=Category::find($id);
 
         $file->delete();
         return redirect('/categories')->with('delete','Category  telah di hapus');

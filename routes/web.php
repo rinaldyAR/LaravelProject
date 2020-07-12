@@ -29,18 +29,20 @@ Route::delete('/question/{id}', 'QuestionController@destroy'); // menghapus data
 
 
 
-
 Route::group(["prefix" =>"/answer"],function()
 {
-Route::get('/{question_id}', 'AnswerController@index')->name('answer'); // menampilkan form jawaban
-Route::post('/{question_id}', 'AnswerController@store'); // menyimpan jawaban
 Route::get('/edit/{id}/{question_id}','AnswerController@edit')->name('edit');
 // edit
 Route::put("edit/{id}/{question_id}","AnswerController@update")->name('update');
 Route::delete("delete/{id}/{question_id}","AnswerController@destroy")->name('delete');
 });
 
+
+
+Route::get('/answer/{question_id}', 'AnswerController@index')->name('indexjawaban'); // menampilkan form jawaban
+Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban
+Route::post('/updateAjax', 'AnswerController@updateAjax');
 Route::resource('categories', 'CategoryController'); 
 
-
+error_reporting(E_ALL);
 
