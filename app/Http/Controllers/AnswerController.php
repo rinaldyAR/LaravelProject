@@ -19,7 +19,7 @@ class AnswerController extends Controller
 {
     public function index($question_id){
         // dd('masuk');
-        $answers = AnswerModel::find_by_question_id($question_id);
+        $answers = Answer::where('question_id','=',$question_id)->get();
         // dd($answers);
         // $question = QuestionModel::find_by_id($question_id);
         $question = Question::where('id',$question_id)->first();
