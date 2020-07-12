@@ -42,6 +42,6 @@ class User extends Authenticatable
     }
 
     public function voteAnswer(){
-        return $this->belongsToMany('App\Answer', 'vote_question', 'user_id', 'answare_id');
+        return $this->belongsToMany('App\Answer', 'vote_answer', 'user_id', 'answare_id');
     }
 }

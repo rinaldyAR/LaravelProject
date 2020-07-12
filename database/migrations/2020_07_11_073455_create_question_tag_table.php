@@ -18,8 +18,8 @@ class CreateQuestionTagTable extends Migration
             $table->unsignedBigInteger('tag_id');
             $table->unsignedBigInteger('question_id');
             
-            $table->foreign('tag_id')->references('id')->on('tags');
-            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 

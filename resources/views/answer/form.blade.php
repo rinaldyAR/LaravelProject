@@ -11,8 +11,15 @@
     </div>
     <hr>
     <p class="mb-1">{!! $question->isi !!}</p>
+    @foreach($question->tags as $tag)
+                <button class="btn btn-success btn-sm"> {{$tag->tag_name}}</button>
+
+            @endforeach
+            <br>
     <small>Tanggal Dibuat     : {{ $question->created_at }}</small>
     <small>Tanggal Update   : {{ $question->updated_at}}</small>
+    <br>
+    <small>Dibuat oleh: {{ $user -> name }}</small>
    </li>
   </div>
   <h5 class="mt-4">Answer:</h5>
@@ -20,6 +27,7 @@
 <div id="{{$res->id}}" class="list-group">
    <li id="ini" class="list-group-item list-group-item-action ">
     <p class="mb-1">{!! $res->isi !!}</p>
+    <p> Dijawab oleh : {{ $res->user_id }}</p>
     <div class="row">
      <div  class="col-4 ">
       <button onclick="saveVote({{ Auth::user()->id }},{{$res->id}})" class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button>

@@ -12,16 +12,23 @@ use \Carbon\Carbon;
 use App\Question;
 use App\Answer;
 use App\Vote_answers;
+use App\User;
+
 class AnswerController extends Controller
 {
     public function index($question_id){
         // dd('masuk');
         $answers = AnswerModel::find_by_question_id($question_id);
-        $question = QuestionModel::find_by_id($question_id);
         // dd($answers);
+        // $question = QuestionModel::find_by_id($question_id);
+        $question = Question::where('id',$question_id)->first();
+        // dd($answers);
+        // dd($question->tags);
+        $user = User::where('id', $question_id)->first();
+        // dd($user);
         $count = self::totalCount($answers);
         //dd($count);
-        return view('answer.form', compact('answers', 'question','count'));
+        return view('answer.form', compact('answers', 'question','count', 'user'));
     }
     public function totalCount($data){
         $temp = [];
