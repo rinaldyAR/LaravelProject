@@ -79,7 +79,7 @@ class AnswerController extends Controller
         $question = answer::find($id);
         $question->delete();
 
-        return redirect('/answer/'.$question_id);
+        return redirect('/answer/'.$question_id)->with('delete',"jawabban telah di hapus");
     }
 
     public function updateAjax(Request $request){

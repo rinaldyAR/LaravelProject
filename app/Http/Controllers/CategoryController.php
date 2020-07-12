@@ -79,7 +79,7 @@ class CategoryController extends Controller
        $file->name=$request->get('name');
        $file->save();
 
-       return redirect('/categories')->with('edit','Category telah di edit');
+       return redirect('/categories')->with('update','Category telah di edit');
     }
 
     /**

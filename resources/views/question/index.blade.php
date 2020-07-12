@@ -12,6 +12,25 @@
         <a href="/question/create" class="btn btn-primary my-2">
             Tambah Pertanyaan
     </a>
+    @if(session('create'))
+<div class="alert alert-success my-3">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+{{session('create')}}</div>
+@elseif(session('update'))
+<div class="alert alert-success my-3">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+{{session('update')}}</div>
+@elseif(session('delete'))
+<div class="alert alert-success my-3">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+{{session('delete')}}</div>
+@endif  
         <table class="table table-bordered ">
                 <thead>
                     <tr>

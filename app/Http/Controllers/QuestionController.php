@@ -63,7 +63,7 @@ class QuestionController extends Controller
             $new_question->tags()->attach($tag->id);
         }
 
-        return redirect('/question');
+        return redirect('/question')->with('create','pertanyaan telah di buat');
     }
 
     public function show($id){
@@ -91,14 +91,14 @@ class QuestionController extends Controller
         $question->created_at = $request->created_at;
         $question->category_id = $request->category_id;
         $question->save();
-        return redirect('/question');
+        return redirect('/question')->with('update',"pertanyaan telah di update");
     }
 
-    public function destroy($id,$question_id){
-        dd($id);
+    public function destroy($id){
+        // dd($id);
         $question = Question::find($id);
         $question->delete();
-        return redirect('/question');
+        return redirect('/question')->with('delete','pertanyaan telah di hapus');
     }
 
 }
