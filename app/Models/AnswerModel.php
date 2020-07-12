@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\DB;
 
 class AnswerModel{
     public static function find_by_question_id($question_id){
-        $item = DB::table('answers')->where('question_id', $question_id)->get();
+        $item = DB::table('answers')
+                        ->select('answers.*', 'users.*')
+                        ->join ('users', 'answers.user_id', '=', 'users.id') 
+                    ->where('question_id', $question_id)->get();
         return $item;
     }
 

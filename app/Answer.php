@@ -17,4 +17,8 @@ class Answer extends Model
         return $this->belongsToMany('App\User', 'vote_answers', 'id', 'user_id');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
 }
