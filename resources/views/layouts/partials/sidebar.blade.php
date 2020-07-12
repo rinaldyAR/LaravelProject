@@ -5,19 +5,11 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Kelompok<sup>86</sup></div>
+        <div class="sidebar-brand-text mx-3">Kelompok<sup>89</sup></div>
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 

@@ -93,7 +93,8 @@ class QuestionController extends Controller
         return redirect('/question');
     }
 
-    public function destroy($id){
+    public function destroy($id,$question_id){
+        dd($id);
         $question = Question::find($id);
         $question->delete();
         return redirect('/question');

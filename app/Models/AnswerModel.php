@@ -14,4 +14,9 @@ class AnswerModel{
         $new_answer = DB::table('answers')->insert($data);
         return $new_answer;
     }
+    public static function  get_once($id)
+    {
+    	$items=DB::table('answers')->where('id',$id)->first();
+    	return $items;
+    }
 }

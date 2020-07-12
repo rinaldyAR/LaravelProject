@@ -27,8 +27,18 @@ Route::get('/question/{id}/edit', 'QuestionController@edit'); // menampilkan for
 Route::put('/question/{id}', 'QuestionController@update'); // menyimpan perubahan dari form edit
 Route::delete('/question/{id}', 'QuestionController@destroy'); // menghapus data dengan id
 
-Route::get('/answer/{question_id}', 'AnswerController@index'); // menampilkan form jawaban
-Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban
+
+
+
+Route::group(["prefix" =>"/answer"],function()
+{
+Route::get('/{question_id}', 'AnswerController@index')->name('answer'); // menampilkan form jawaban
+Route::post('/{question_id}', 'AnswerController@store'); // menyimpan jawaban
+Route::get('/edit/{id}/{question_id}','AnswerController@edit')->name('edit');
+// edit
+Route::put("edit/{id}/{question_id}","AnswerController@update")->name('update');
+Route::delete("delete/{id}/{question_id}","AnswerController@destroy")->name('delete');
+});
 
 Route::resource('categories', 'CategoryController'); 
 

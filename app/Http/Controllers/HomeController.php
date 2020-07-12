@@ -24,8 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $file=Question::all();
-        return view('question.index',["questions"=>$file]);
+        // $file=Question::all();
+        // return view('question.index',["questions"=>$file]);
+        return redirect('/question');
     }
     
 }
