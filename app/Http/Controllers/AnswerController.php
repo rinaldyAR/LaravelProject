@@ -11,7 +11,7 @@ use \Carbon\Carbon;
 // model eloquent
 use App\Question;
 use App\Answer;
-use App\Vote_answers;
+use App\Vote_answer;
 class AnswerController extends Controller
 {
     public function index($question_id){
@@ -26,7 +26,7 @@ class AnswerController extends Controller
     public function totalCount($data){
         $temp = [];
         foreach($data as $dat){
-            array_push($temp,Vote_answers::where('answare_id','=',$dat->id)->where('status','=',1)->count());
+            array_push($temp,Vote_answer::where('answare_id','=',$dat->id)->where('status','=',1)->count());
         }
         return $temp;
     }
@@ -48,10 +48,20 @@ class AnswerController extends Controller
         //Log::debug('Some message.');
 
         echo "asasas";
-        $answer = Vote_answers::where('user_id','=',$userid)->where('answare_id','=',$ansid)->first();
-
-        $answer->status = $status;
-        $answer->save();
+        $answer = Vote_answer::where('user_id','=',$userid)->where('answare_id','=',$ansid)->count();
+        if($answer < 1){
+            $answer = new Vote_answer;
+            $answer->user_id = $userid;
+            $answer->answare_id = $ansid;
+            $answer->status = $status;
+            $answer->save();
+            exit;
+        }else{
+            $answer = Vote_answer::where('user_id','=',$userid)->where('answare_id','=',$ansid)->first();
+            $answer->status = $status;
+            $answer->save();
+            exit;
+        }
         exit;
     }
 }
