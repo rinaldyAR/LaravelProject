@@ -11,15 +11,18 @@
     </div>
     <hr>
     <p class="mb-1">{!! $question->isi !!}</p>
-    @foreach($question->tags as $tag)
-                <button class="btn btn-success btn-sm"> {{$tag->tag_name}}</button>
 
-            @endforeach
-            <br>
-    <small>Tanggal Dibuat     : {{ $question->created_at }}</small>
-    <small>Tanggal Update   : {{ $question->updated_at}}</small>
-    <br>
-    <small>Dibuat oleh: {{ $user -> name }}</small>
+        @foreach($question->tags as $tag)
+                <button class="btn btn-success btn-sm"> {{$tag->tag_name}}</button>
+        @endforeach
+        <br>
+                <small>Dibuat oleh: {{ $user -> name }}</small>
+        <br>
+                <small>Kategori : {{ $question -> category->name}}</small>
+        <br>
+                <small>Tanggal Dibuat     : {{ $question->created_at }}</small>
+                <small>Tanggal Update   : {{ $question->updated_at}}</small>
+        
    </li>
   </div>
   <h5 class="mt-4">Answer:</h5>
