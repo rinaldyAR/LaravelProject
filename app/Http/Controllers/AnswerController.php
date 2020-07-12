@@ -45,7 +45,7 @@ class AnswerController extends Controller
         $data = $request->all();
         unset($data["_token"]);
         AnswerModel::save($data);
-        return redirect('/question');
+        return redirect('/answer/'.$question_id);
     }
 
     public function updateAjax(Request $request){
