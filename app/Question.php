@@ -27,7 +27,10 @@ class Question extends Model
     public function votes(){
         return $this->belongsToMany('App\User', 'vote_question', 'question_id', 'user_id');
     }
-    public function user(){
+
+
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 }

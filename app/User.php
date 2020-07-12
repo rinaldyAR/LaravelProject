@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function voteAnswer(){
         return $this->belongsToMany('App\Answer', 'vote_answer', 'user_id', 'answare_id');
     }
+
+    public function question(){
+        return $this->hasOne('App\Question');
+    }
 }

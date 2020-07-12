@@ -31,7 +31,7 @@
 <div id="{{$res->id}}" class="list-group">
    <li id="ini" class="list-group-item list-group-item-action ">
     <p class="mb-1">{!! $res->isi !!}</p>
-    <p> Dijawab oleh : {{ $res-> name }}</p>
+    <p> Dijawab oleh : {{ $res-> user->name }}</p>
     <div class="row">
      <div  class="col-4 ">
       <button onclick="saveVote({{ Auth::user()->id }},{{$res->id}})" class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button>
@@ -89,23 +89,29 @@
 function saveVote(userid,postid){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         console.log(userid+' '+postid)
+        
+        
         jQuery.ajax({
                 url: "/updateAjax",
                 type: "POST",
                 data: {
-                        _token: CSRF_TOKEN,
-                        postid: postid,
-                        userid: userid,
-                        status: '1'			
+                        "_token": CSRF_TOKEN,
+                        "postid": postid,
+                        "userid": userid,
+                        "status": '1'			
                 },
-                dataType: 'json',
                 success: function(data) {
-                        alert(JSON.stringify(data));
+                        var theid = 'v'+postid;
+                        var displayvote = document.getElementById(theid).innerHTML;
+                        displayvote = parseInt(displayvote)+1;
+                        document.getElementById(theid).innerHTML=displayvote;
                 },
                 error: function(data) {
                         alert(JSON.stringify(data));
+                        
                 }
         })
+        
 }
 
 function removeVote(userid,postid){
@@ -115,19 +121,23 @@ function removeVote(userid,postid){
                 url: "/updateAjax",
                 type: "POST",
                 data: {
-                        _token: CSRF_TOKEN,
-                        postid: postid,
-                        userid: userid,
-                        status: '0'			
+                        "_token": CSRF_TOKEN,
+                        "postid": postid,
+                        "userid": userid,
+                        "status": '0'			
                 },
-                dataType: 'json',
                 success: function(data) {
-                        alert(JSON.stringify(data));
+                        var theid = 'v'+postid;
+                        var displayvote = document.getElementById(theid).innerHTML;
+                        displayvote = parseInt(displayvote)-1;
+                        document.getElementById(theid).innerHTML=displayvote;
                 },
                 error: function(data) {
                         alert(JSON.stringify(data));
+                        
                 }
         })
+        
 }
 </script>
 @endpush

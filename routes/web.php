@@ -27,7 +27,7 @@ Route::get('/question/{id}/edit', 'QuestionController@edit'); // menampilkan for
 Route::put('/question/{id}', 'QuestionController@update'); // menyimpan perubahan dari form edit
 Route::delete('/question/{id}', 'QuestionController@destroy'); // menghapus data dengan id
 
-Route::get('/answer/{question_id}', 'AnswerController@index'); // menampilkan form jawaban
+Route::get('/answer/{question_id}', 'AnswerController@index')->name('indexjawaban'); // menampilkan form jawaban
 Route::post('/answer/{question_id}', 'AnswerController@store'); // menyimpan jawaban
 Route::post('/updateAjax', 'AnswerController@updateAjax');
 Route::resource('categories', 'CategoryController'); 
