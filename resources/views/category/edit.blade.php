@@ -9,7 +9,7 @@
                 <label for="name">Nama Kategori</label>
                 <input class="form-control" type="text" name="name" placeholder="Isi nama kategori" value="{{$file->name}}">
 
-                <input class="btn btn-primary mt-2" type="submit" value="Tambah Kategori">
+                <input class="btn btn-primary mt-2" type="submit" value="Update Kategori">
             </div>
         </form>
     </div>

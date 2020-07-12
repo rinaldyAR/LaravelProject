@@ -18,6 +18,10 @@ use App\User;
 use App\Vote_answer;
 class AnswerController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index($question_id){
         // dd('masuk');
         $answers = Answer::where('question_id','=',$question_id)->get();
