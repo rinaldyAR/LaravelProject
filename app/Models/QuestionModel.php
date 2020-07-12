@@ -15,7 +15,10 @@ class QuestionModel {
     }
 
     public static function find_by_id($id){
-        $item = DB::table('questions')->where('id', $id)->first();
+        $item = DB::table('questions')
+                    ->select('questions.*', 'users.*')
+                    ->join ('users', 'questions.user_id', '=', 'users.id') 
+                ->where('id', $id)->get();
         return $item;
     }
 

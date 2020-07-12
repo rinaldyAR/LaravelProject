@@ -23,7 +23,7 @@ class AnswerController extends Controller
         // dd($answers);
         // $question = QuestionModel::find_by_id($question_id);
         $question = Question::where('id',$question_id)->first();
-        // dd($answers);
+        // dd($question);
         // dd($question->tags);
         $user = User::where('id', $question_id)->first();
         // dd($user);

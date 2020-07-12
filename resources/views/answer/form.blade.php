@@ -16,7 +16,7 @@
                 <button class="btn btn-success btn-sm"> {{$tag->tag_name}}</button>
         @endforeach
         <br>
-                <small>Dibuat oleh: {{ $user -> name }}</small>
+                <small>Dibuat oleh: {{ $question->user -> name }}</small>
         <br>
                 <small>Kategori : {{ $question -> category->name}}</small>
         <br>
